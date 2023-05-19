@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.io</title>
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <h1 id="title">Hlo world!</h1>
+    <h3>Token</h3>
+    <input id="token" type="text" placeholder="Enter Your Token" />
+    <br />
+    <h3>Type Your Message</h3>
+    <input id="message" type="text" placeholder="chat here" required/>
+    <h5 id="replay">Reply From Server :</h5>
+    <button onclick="socket()">Submit</button>
+  </body>
+  <script>
+    function socket() {
+      const socket = io("http://localhost:3000/broadcast", {
+        query: { token: document.getElementById("token").value },
+      });
+
+      socket.on("newUserConnect", (data) => {
+        document.getElementById("title").innerHTML = data;
+      });
+      socket.on("my-event", (data) => {
+        document.getElementById("replay").innerText = "Message from server: "+data;
+      });
+
+      socket.emit("my-event", document.getElementById("message").value);
+    }
+  </script>
+</html>
