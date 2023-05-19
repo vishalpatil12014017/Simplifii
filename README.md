@@ -8,6 +8,8 @@ The following APIs were used in this project:
 --data-raw '{
     "email":"patil120140@gmail.com"
 }'```
+
+
 2. Login: ```curl --location 'https://simplifii-production.up.railway.app/api/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
