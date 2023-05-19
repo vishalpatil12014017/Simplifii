@@ -1,15 +1,15 @@
 # Simplifii
 
-### Feture
+### Features
 
-1. generate OTP
+## 1. generate OTP
 
  ◉ User will send his email address (which also acts as the login id) in the request body
 
  ◉ backend will generate an OTP and send it back to the user provided certain conditions are met. The conditions that need to be met are listed below. 
 
 
-2. Login API
+## 2. Login API
 
  ◉ User will send his email address and OTP in the request body
 
